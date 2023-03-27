@@ -1,0 +1,14 @@
+baseURL = ''
+languageCode = 'en-us'
+title = 'Git Workflow'
+theme = 'relearn'
+
+[outputs]
+home = [ "HTML", "RSS", "SEARCH", "PRINT" ]
+section = ["HTML", "RSS", "PRINT"]
+page = ["HTML", "RSS", "PRINT"]
+
+[params]
+alwaysOpen = false
+collapsibleMenu = true
+themeVariant = ["blue","green","red","relearn-dark"]
