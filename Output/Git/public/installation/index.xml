@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Installation on Git Workflow</title>
+    <link>/installation/index.html</link>
+    <description>Recent content in Installation on Git Workflow</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Mar 2023 17:09:58 +0530</lastBuildDate><atom:link href="/installation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>One-time Git setup</title>
+      <link>/installation/one-time-git-setup/index.html</link>
+      <pubDate>Wed, 15 Mar 2023 16:59:17 +0530</pubDate>
+      <guid>/installation/one-time-git-setup/index.html</guid>
+      <description>Set up name and e-mail Set up your e-mail address (use all lowercase), and name (also with all lower-case and with no space), like gandalf or boromir or tombombadil. If your first name is unambiguous enough (in other words, you are an old-timer) use just that. Otherwise use both first and last names. Do not use an initial.
+git config --global user.name boromir git config --global user.email boromir@gondor.org </description>
+    </item>
+    <item>
+      <title>Setting up a diff tool</title>
+      <link>/installation/setting-up-a-diff-tool/index.html</link>
+      <pubDate>Wed, 15 Mar 2023 17:02:31 +0530</pubDate>
+      <guid>/installation/setting-up-a-diff-tool/index.html</guid>
+      <description>Here’s how to set up WinMerge as the diff tool for Git. Use git config &amp;ndash;global &amp;ndash;edit to edit the global Git config file in your text editor. Then, add (or modify) the following sections (the cmd= lines are too long and are wrapping around in the text below, take care when you are adding them, and take care of escaping the quotes and the slashes).
+[diff] tool = winmerge [difftool] prompt = false [difftool &amp;#34;winmerge&amp;#34;] cmd = \&amp;#34;C:\\Apps\\WinMerge\\WinMergeU.</description>
+    </item>
+    <item>
+      <title>Setting up a merge tool</title>
+      <link>/installation/setting-up-a-merge-tool/index.html</link>
+      <pubDate>Wed, 15 Mar 2023 17:09:58 +0530</pubDate>
+      <guid>/installation/setting-up-a-merge-tool/index.html</guid>
+      <description>You can set up P4Merge as an external merge tool. Download and install it from the Perforce site. Then, edit the global configuration using git config &amp;ndash;global &amp;ndash;edit and add these lines (substitute your own path to the P4Merge application instead of the placeholder below):
+[merge] tool = P4Merge conflictstyle = diff3 [mergetool] prompt = false [mergetool &amp;#34;P4Merge&amp;#34;] path = C:\\Apps\\P4Merge\\P4Merge.exe keepBackup = false Note the conflictstyle = diff3 entry in the [merge] section.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.110.0">
+    <meta name="generator" content="Relearn 5.12.3+tip">
+    <meta name="description" content="">
+    <title>Setting up a diff tool :: Git Workflow</title>
+    <link href="/installation/setting-up-a-diff-tool/index.html" rel="canonical" type="text/html" title="Setting up a diff tool :: Git Workflow">
+    <link href="/installation/setting-up-a-diff-tool/index.xml" rel="alternate" type="application/rss+xml" title="Setting up a diff tool :: Git Workflow">
+    <!-- https://github.com/filamentgroup/loadCSS/blob/master/README.md#how-to-use -->
+    <link href="/css/fontawesome-all.min.css?1680088302" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fontawesome-all.min.css?1680088302" rel="stylesheet"></noscript>
+    <link href="/css/nucleus.css?1680088302" rel="stylesheet">
+    <link href="/css/auto-complete.css?1680088302" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/auto-complete.css?1680088302" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar.min.css?1680088302" rel="stylesheet">
+    <link href="/css/fonts.css?1680088302" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/css/fonts.css?1680088302" rel="stylesheet"></noscript>
+    <link href="/css/theme.css?1680088302" rel="stylesheet">
+    <link href="/css/theme-blue.css?1680088302" rel="stylesheet" id="variant-style">
+    <link href="/css/variant.css?1680088302" rel="stylesheet">
+    <link href="/css/print.css?1680088302" rel="stylesheet" media="print">
+    <link href="/css/format-print.css?1680088302" rel="stylesheet">
+    <link href="/css/ie.css?1680088302" rel="stylesheet">
+    <script src="/js/url.js?1680088302"></script>
+    <script src="/js/variant.js?1680088302"></script>
+    <script>
+      // hack to let hugo tell us how to get to the root when using relativeURLs, it needs to be called *url= for it to do its magic:
+      // https://github.com/gohugoio/hugo/blob/145b3fcce35fbac25c7033c91c1b7ae6d1179da8/transform/urlreplacers/absurlreplacer.go#L72
+      window.index_js_url="/index.search.js";
+      var root_url="/";
+      var baseUri=root_url.replace(/\/$/, '');
+      // translations
+      window.T_Copy_to_clipboard = 'Copy to clipboard';
+      window.T_Copied_to_clipboard = 'Copied to clipboard!';
+      window.T_Copy_link_to_clipboard = 'Copy link to clipboard';
+      window.T_Link_copied_to_clipboard = 'Copied link to clipboard!';
+      window.T_No_results_found = 'No results found for \u0022{0}\u0022';
+      window.T_N_results_found = '{1} results found for \u0022{0}\u0022';
+      // some further base stuff
+      var baseUriFull='/';
+      window.variants && variants.init( [ 'blue', 'green', 'red', 'relearn-dark' ] );
+    </script>
+  </head>
+  <body class="mobile-support print" data-url="/installation/setting-up-a-diff-tool/index.html">
+    <div id="body" class="default-animation">
+      <div id="sidebar-overlay"></div>
+      <div id="toc-overlay"></div>
+      <nav id="topbar" class="highlightable">
+        <div>
+          <div id="breadcrumbs">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" class="topbar-link" title='Menu (CTRL+ALT+n)'><i class="fas fa-bars fa-fw"></i></a>
+            </span>
+            <ol class="links" itemscope itemtype="http://schema.org/BreadcrumbList">
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/index.html"><span itemprop="name">Git Installation Manual</span></a><meta itemprop="position" content="1"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/installation/index.html"><span itemprop="name">Installation</span></a><meta itemprop="position" content="2"> > </li>
+              <li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Setting up a diff tool</span><meta itemprop="position" content="3"></li>
+            </ol>
+          </div>
+        </div>
+      </nav>
+      <main id="body-inner" class="highlightable default" tabindex="-1">
+        <div class="flex-block-wrapper">
+          <div id="head-tags">
+          </div>
+          <article class="default">
+<h1 id="setting-up-a-diff-tool">Setting up a diff tool</h1>
+
+<p>Here’s how to set up WinMerge as the diff tool for Git. Use git config &ndash;global &ndash;edit to edit the global Git config file in your text editor. Then, add (or modify) the following sections (the cmd= lines are too long and are wrapping around in the text below, take care when you are adding them, and take care of escaping the quotes and the slashes).</p>
+<pre tabindex="0"><code>[diff] 
+    tool = winmerge
+[difftool]
+    prompt = false 
+[difftool &#34;winmerge&#34;] 
+    cmd = \&#34;C:\\Apps\\WinMerge\\WinMergeU.exe\&#34; -e -r -u -dl \&#34;Old $BASE\&#34; -dr \&#34;New $BASE\&#34; \&#34;$LOCAL\&#34; \&#34;$REMOTE\&#34;
+    trustExitCode = true
+</code></pre><p>Now we have set up an external diff tool for Git to use. However, you wil note that git diff will still use the built-in diff that just dumps on the console. To invoke the external diff tool, we need to use <strong>git difftool -d</strong> or <strong>git difftool &ndash;dir-diff</strong>. That will invoke the external tool you have set up. The <strong>&ndash;dir-diff</strong> switch is important. Otherwise it will invoke WinMerge once for each file instead of showing a unified interface with all the changed files.</p>
+<p>It’s painful to keep typing in this each time, so one can set up an alias. Again edit the global config file using git config &ndash;global &ndash;edit and add the alias git di to invoke the diff-tool (I also added a few more aliases here that I use):</p>
+<pre tabindex="0"><code>[alias]
+    st = status
+    sw = switch
+    di = difftool --dir-diff
+    tip = log -1 head
+    lg = log --graph --format==\&#34;%h %C(yellow)%an%Creset %C(green)%as%Creset %s %C(brightblue)%d%Creset\&#34; 
+</code></pre><p>Now, you can just type in <strong>git di</strong> to run a diff using WinMerge.</p>
+
+            <footer class="footline">
+            </footer>
+          </article>
+        </div>
+      </main>
+    </div>
+    <script src="/js/clipboard.min.js?1680088302" defer></script>
+    <script src="/js/perfect-scrollbar.min.js?1680088302" defer></script>
+    <script src="/js/theme.js?1680088302" defer></script>
+  </body>
+</html>

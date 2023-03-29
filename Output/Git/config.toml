@@ -1,7 +1,7 @@
 baseURL = ''
 languageCode = 'en-us'
 title = 'Git Workflow'
-theme = 'relearn'
+theme = 'leren'
 
 [outputs]
 home = [ "HTML", "RSS", "SEARCH", "PRINT" ]

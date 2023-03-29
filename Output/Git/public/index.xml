@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git Installation Manual on Git Workflow</title>
+    <link>/index.html</link>
+    <description>Recent content in Git Installation Manual on Git Workflow</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Mar 2023 17:09:58 +0530</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Installation</title>
+      <link>/installation/index.html</link>
+      <pubDate>Wed, 15 Mar 2023 17:09:58 +0530</pubDate>
+      <guid>/installation/index.html</guid>
+      <description>Download and install git from git-scm.com/download/win.
+Overrides from the default installation process are listed below (the headings in bold are the Git Setup dialog pages, and the notes below each are the recommendations for that page). For any page not listed below, just go with the default installation setting. Items in yellow are critical – working with Flux depends on these being set correctly.
+Select Components Make sure you leave the check-box selected to install Git LFS (Large File Support).</description>
+    </item>
+  </channel>
+</rss>
